@@ -3,13 +3,14 @@
 Plot sine wave from data file and save as PNG.
 """
 
-import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Read data from file
-data = np.loadtxt('sin_data.txt')
-x = data[:, 0]
-y = data[:, 1]
+# Read data from file using pandas
+df = pd.read_csv('sin_data.txt', sep=' ')
+x = df['x'].values
+y = df['y'].values
 
 # Create the plot
 plt.figure(figsize=(10, 6))
