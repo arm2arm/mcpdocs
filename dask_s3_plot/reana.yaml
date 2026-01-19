@@ -4,12 +4,12 @@ inputs:
     - hexbin_plots.py
 workflow:
   type: serial
+  resources:
+    memory: 32Gi
   specification:
     steps:
       - name: create-hexbin-plots
         environment: gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest
-        resources:
-          memory: 32Gi
         commands:
           - python hexbin_plots.py
 outputs:
