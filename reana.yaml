@@ -3,14 +3,12 @@ workflow:
   specification:
     steps:
       - name: generate-data
-        environment: python:3.9-slim
+        environment: gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest
         commands:
-          - pip install numpy matplotlib > /dev/null 2>&1
           - python generate_data.py
       - name: plot-sin
-        environment: python:3.9-slim
+        environment: gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest
         commands:
-          - pip install numpy matplotlib > /dev/null 2>&1
           - python plot_sin.py
 outputs:
   files:
