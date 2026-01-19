@@ -1,0 +1,18 @@
+workflow:
+  type: serial
+  specification:
+    steps:
+      - name: generate-data
+        environment: python:3.9-slim
+        commands:
+          - pip install numpy matplotlib > /dev/null 2>&1
+          - python generate_data.py
+      - name: plot-sin
+        environment: python:3.9-slim
+        commands:
+          - pip install numpy matplotlib > /dev/null 2>&1
+          - python plot_sin.py
+outputs:
+  files:
+    - sin_plot.png
+    - sin_data.txt
