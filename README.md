@@ -56,6 +56,8 @@ docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XX
 
 ## Results
 
+> **Note:** The sine wave plot will appear here after running the workflow successfully.
+
 ![Sine Wave Plot](sin_plot.png)
 
 ## Container Image
