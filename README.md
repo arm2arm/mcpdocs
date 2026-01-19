@@ -50,11 +50,6 @@ docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XX
 docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 download -w test
 ```
 
-### Interactive shell:
-```cmd
-docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -it -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 /bin/bash
-```
-
 ## Output Files
 - `sin_plot.png` - Sine wave plot image
 - `sin_data.txt` - Sine wave data points (x, y)
