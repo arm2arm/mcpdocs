@@ -6,7 +6,7 @@ A simple REANA serial workflow that generates sine wave data and creates a plot.
 ## Files
 - `reana.yaml` - Workflow definition
 - `generate_data.py` - Generates sine wave data points
-- `plot_sin.py` - Creates a plot from the data
+- `plot_sin.py` - Creates a plot from the data using pandas
 
 ## Workflow Structure
 1. **generate-data**: Generates 100 sine wave data points (0 to 2π)
