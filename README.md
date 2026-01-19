@@ -54,6 +54,10 @@ docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XX
 - `sin_plot.png` - Sine wave plot image
 - `sin_data.txt` - Sine wave data points (x, y)
 
+## Results
+
+![Sine Wave Plot](sin_plot.png)
+
 ## Container Image
 The workflow uses `gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest` which includes:
 - Python 3.x
