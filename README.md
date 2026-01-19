@@ -1,69 +1,79 @@
-# REANA Serial Workflow - Sine Wave Plot
+# REANA Workflow Examples
 
-## Overview
-A simple REANA serial workflow that generates sine wave data and creates a plot.
+A collection of REANA serial workflow examples demonstrating various patterns for reproducible scientific computing.
 
-## Files
-- `reana.yaml` - Workflow definition
-- `generate_data.py` - Generates sine wave data points
-- `plot_sin.py` - Creates a plot from the data using pandas
+## Project Structure
 
-## Workflow Structure
-1. **generate-data**: Generates 100 sine wave data points (0 to 2π)
-2. **plot-sin**: Creates a PNG plot with proper labels and formatting
+```
+mcpdocs/
+├── sin_plot/           # Simple sine wave generation and plotting
+├── dask_s3_read/       # Read parquet from S3 and compute statistics
+├── dask_s3_plot/       # Read from S3 and create hexbin scatter plots
+├── memory-bank/        # AI context/memory documentation
+└── .gitignore
+```
 
-## How to Run
+## Examples
 
-Replace `XXXX` with your actual REANA access token:
+### 1. sin_plot
+Simple REANA serial workflow that generates sine wave data and creates a plot.
 
+**Run:**
 ```cmd
+cd sin_plot
 docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -it -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 run -n test -f reana.yaml
 ```
 
-### Parameters:
-- `-e REANA_SERVER_URL` - REANA server URL
-- `-e REANA_ACCESS_TOKEN` - Your access token
-- `-v "%cd%:/workdir"` - Mounts current directory (Windows CMD)
-- `-w /workdir` - Working directory in container
-- `-n test` - Workflow name
-- `-f reana.yaml` - Workflow file
+**Output:** `sin_plot.png`, `sin_data.txt`
 
-## Additional Commands
+### 2. dask_s3_read
+Read parquet data from S3 using Dask and compute statistics.
 
-### Validate the workflow:
+**Run:**
+```cmd
+cd dask_s3_read
+docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -it -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 run -n dask-s3-read -f reana.yaml
+```
+
+**Output:** `stats.txt`
+
+### 3. dask_s3_plot
+Create hexbin scatter plots from S3 parquet data using Dask.
+
+**Run:**
+```cmd
+cd dask_s3_plot
+docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -it -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 run -n dask-s3-plot -f reana.yaml
+```
+
+**Output:** `xg_yg_hexbin.png`, `bprp_mg_hexbin.png`
+
+## Common Commands
+
+### Validate workflow
 ```cmd
 docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -it -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 validate -f reana.yaml
 ```
 
-### Check workflow status:
+### Check status
 ```cmd
-docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 status -w test
+docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 status -w workflow_name
 ```
 
-### View workflow logs:
+### Download outputs
 ```cmd
-docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 logs -w test
+docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 download -w workflow_name
 ```
-
-### Download outputs:
-```cmd
-docker run -e REANA_SERVER_URL=https://reana-p4n.aip.de -e REANA_ACCESS_TOKEN=XXXX --rm -v "%cd%:/workdir" -w /workdir reanahub/reana-client:0.9.4 download -w test
-```
-
-## Output Files
-- `sin_plot.png` - Sine wave plot image
-- `sin_data.txt` - Sine wave data points (x, y)
-
-## Results
-
-> **Note:** The sine wave plot will appear here after running the workflow successfully.
-
-![Sine Wave Plot](sin_plot.png)
 
 ## Container Image
-The workflow uses `gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest` which includes:
-- Python 3.x
-- NumPy, SciPy, Matplotlib
-- Pandas, Scikit-learn
-- TensorFlow, XGBoost
-- And many more scientific Python libraries
+
+All workflows use:
+- **Runtime**: `gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest`
+- **Client**: `reanahub/reana-client:0.9.4`
+
+The astro-ml container includes: NumPy, Pandas, Matplotlib, SciPy, Scikit-learn, Dask, and 50+ scientific Python packages.
+
+## Documentation
+
+- Each example has its own README.md with specific instructions
+- Memory Bank in `memory-bank/` contains project context and patterns for AI agents

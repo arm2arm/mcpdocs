@@ -1,0 +1,15 @@
+version: 0.6.0
+inputs:
+  files:
+    - read_stats.py
+workflow:
+  type: serial
+  specification:
+    steps:
+      - name: read-s3-stats
+        environment: gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest
+        commands:
+          - python read_stats.py
+outputs:
+  files:
+    - stats.txt

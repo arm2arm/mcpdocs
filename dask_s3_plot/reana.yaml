@@ -1,0 +1,16 @@
+version: 0.6.0
+inputs:
+  files:
+    - hexbin_plots.py
+workflow:
+  type: serial
+  specification:
+    steps:
+      - name: create-hexbin-plots
+        environment: gitlab-p4n.aip.de:5005/compute4punch/container-stacks/astro-ml:latest
+        commands:
+          - python hexbin_plots.py
+outputs:
+  files:
+    - xg_yg_hexbin.png
+    - bprp_mg_hexbin.png

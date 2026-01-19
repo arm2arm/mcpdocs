@@ -23,6 +23,17 @@ This project follows a **serial workflow pattern** using REANA's serial workflow
     (auto-uploaded)          (sin_plot.png)
 ```
 
+## Project Structure Pattern
+
+```
+mcpdocs/
+├── sin_plot/           # Simple serial workflow
+├── dask_s3_read/       # Dask + S3 data reading
+├── dask_s3_plot/       # Dask + S3 visualization
+├── memory-bank/        # Project context
+└── .gitignore
+```
+
 ## Key Design Patterns
 
 ### 1. Serial Workflow Pattern
@@ -73,3 +84,34 @@ y = df['y'].values
 2. **File Paths**: Use relative paths only (e.g., `sin_data.txt`, not `/path/to/file`)
 3. **Container Image**: Must exist and be accessible
 4. **Outputs**: Must be listed in `outputs.files` to be downloadable
+
+## Dask + S3 Patterns
+
+### S3 Parquet Reading Pattern
+```python
+import dask.dataframe as dd
+
+df = dd.read_parquet(
+    "s3://bucket/path/*.parquet",
+    storage_options={
+        'use_ssl': True,
+        'anon': True,
+        'client_kwargs': dict(endpoint_url='https://s3.data.aip.de:9000')
+    }
+)
+```
+
+### Sampling and Persistence Pattern
+```python
+df_sample = df.sample(frac=0.01).persist()
+df_compute = df_sample.compute()
+```
+- Use `persist()` to keep data in memory across computations
+- Sample large datasets before visualization
+
+### S3 Data Access Pattern
+- **Endpoint**: `https://s3.data.aip.de:9000`
+- **Bucket**: `shboost2024/shboost_08july2024_pub.parq`
+- **Format**: Parquet
+- **SSL**: Required
+- **Anonymous**: True (public access)

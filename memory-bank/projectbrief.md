@@ -1,7 +1,7 @@
 # Project Brief
 
 ## Overview
-A REANA serial workflow for generating sine wave data and creating a publication-quality plot.
+A collection of REANA serial workflow examples demonstrating various patterns for reproducible scientific computing.
 
 ## Core Requirements
 - Generate sine wave data points (100 points from 0 to 2π)
@@ -24,6 +24,8 @@ A REANA serial workflow for generating sine wave data and creating a publication
 - Code follows project conventions
 
 ## Project Scope
-- Simple two-step serial workflow (generate → plot)
-- Educational example for REANA workflows
+- **sin_plot/**: Simple two-step serial workflow (generate → plot)
+- **dask_s3_read/**: Read from S3, compute statistics
+- **dask_s3_plot/**: Read from S3, create hexbin plots
+- Educational examples for REANA workflows
 - Foundation for more complex scientific workflows
