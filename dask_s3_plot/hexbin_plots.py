@@ -22,7 +22,7 @@ df = dd.read_parquet(
 # Memory-efficient sampling: Use random_split to get 5% without full persist
 # This avoids loading the entire dataset into memory
 print("Sampling data (5%) using random_split for minimal memory footprint...")
-df_sample, _ = df.random_split(frac=0.05, random_state=42)
+df_sample, _ = df.random_split(frac=[0.05, 0.95], random_state=42)
 df_compute = df_sample.compute()
 
 print(f"Sample size: {len(df_compute)} rows")
