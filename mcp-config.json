@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mcpdocs-agent": {
+      "command": "python",
+      "args": ["-m", "mcpdocs_agent"],
+      "description": "MCP server for REANA scientific workflow automation and data analysis"
+    }
+  }
+}

@@ -8,10 +8,24 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
 
 # REANA outputs
 sin_data.txt
 # sin_plot.png  # Track this in git as a result
+
+# MCP agent generated files
+*_data.txt
+plot.png
+stats.txt
+*.parquet
 
 # IDE
 .vscode/
