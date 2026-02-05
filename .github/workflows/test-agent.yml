@@ -1,0 +1,57 @@
+name: Test MCP Agent
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'mcpdocs_agent/**'
+      - 'pyproject.toml'
+      - '.github/workflows/test-agent.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'mcpdocs_agent/**'
+      - 'pyproject.toml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+    
+    - name: Check installed versions
+      run: |
+        python -c "import numpy; print(f'numpy: {numpy.__version__}')"
+        python -c "import pandas; print(f'pandas: {pandas.__version__}')"
+        python -c "import matplotlib; print(f'matplotlib: {matplotlib.__version__}')"
+        python -c "import dask; print(f'dask: {dask.__version__}')"
+    
+    - name: Run test script
+      run: |
+        python test_agent.py
+    
+    - name: Run example usage
+      run: |
+        python example_usage.py
+    
+    - name: Verify generated files
+      run: |
+        ls -lh example_sin_plot.png example_cos_plot.png
+        test -f example_sin_plot.png
+        test -f example_cos_plot.png

@@ -1,20 +1,23 @@
 # mcpdocs
 
-> **REANA workflow examples for reproducible scientific computing with Python, Dask, and cloud data processing**
+> **REANA workflow examples for reproducible scientific computing with Python, Dask, and cloud data processing**  
+> **Now with MCP Agent for AI-assisted workflow automation!**
 
 [![REANA](https://img.shields.io/badge/REANA-0.9.4-blue.svg)](https://reanahub.io/)
 [![Docker](https://img.shields.io/badge/Docker-required-blue.svg)](https://www.docker.com/)
-[![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![MCP](https://img.shields.io/badge/MCP-1.1.0+-purple.svg)](https://modelcontextprotocol.io/)
 [![License](https://img.shields.io/badge/License-See%20Repo-lightgrey.svg)](https://github.com/arm2arm/mcpdocs)
 [![Documentation](https://img.shields.io/badge/docs-examples-green.svg)](#examples)
 
-A curated collection of REANA serial workflow examples demonstrating best practices for reproducible scientific computing. Features containerized workflows for data generation, visualization, and distributed computing with real-world astronomy datasets.
+A curated collection of REANA serial workflow examples demonstrating best practices for reproducible scientific computing. Features containerized workflows for data generation, visualization, and distributed computing with real-world astronomy datasets. Now includes an **MCP (Model Context Protocol) agent** for AI-assisted scientific workflow automation!
 
 ---
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
+- [MCP Agent - NEW!](#mcp-agent---new)
 - [Features](#features)
 - [Installation & Prerequisites](#installation--prerequisites)
 - [Usage Examples](#usage-examples)
@@ -57,8 +60,54 @@ docker run -e REANA_SERVER_URL -e REANA_ACCESS_TOKEN \
 
 ---
 
+## MCP Agent - NEW!
+
+🚀 **Introducing the mcpdocs MCP Agent** - An AI-powered assistant for scientific workflow automation!
+
+The MCP (Model Context Protocol) agent provides intelligent tools for:
+- 🔢 **Data Generation**: Create mathematical function data (sine, cosine, tangent)
+- 📊 **Visualization**: Generate publication-quality plots
+- 📈 **Analysis**: Compute comprehensive statistics
+- ☁️ **Cloud Data**: Access and analyze S3 parquet datasets with Dask
+
+### Quick Start with MCP Agent
+
+```bash
+# Install the MCP agent
+cd mcpdocs
+pip install -e .
+
+# Run the MCP server
+python -m mcpdocs_agent
+```
+
+### Use with AI Assistants
+
+Configure your AI assistant (Claude Desktop, Cline, etc.) to use the MCP agent:
+
+```json
+{
+  "mcpServers": {
+    "mcpdocs-agent": {
+      "command": "python",
+      "args": ["-m", "mcpdocs_agent"]
+    }
+  }
+}
+```
+
+Then interact naturally:
+- "Generate 200 sine wave points from 0 to 4π"
+- "Plot the data from sin_data.txt with title 'My Sine Wave'"
+- "Analyze S3 data from bucket shboost2024"
+
+📚 **[Full MCP Agent Documentation](MCP_AGENT_README.md)**
+
+---
+
 ## Features
 
+- **🤖 AI-Powered Automation**: MCP agent for intelligent workflow assistance
 - **Reproducible Workflows**: Containerized scientific computing with REANA
 - **Data Visualization**: Generate plots from computed data using Matplotlib
 - **Cloud Data Processing**: Read and analyze S3-hosted Parquet datasets
@@ -66,6 +115,7 @@ docker run -e REANA_SERVER_URL -e REANA_ACCESS_TOKEN \
 - **Docker Integration**: All workflows run in isolated containers
 - **Scientific Stack**: Pre-configured with 50+ Python scientific libraries
 - **Well-Documented**: Each example includes detailed README and inline comments
+- **Latest Libraries**: Uses recent stable versions (numpy 2.0+, pandas 2.2+, dask 2024.12+)
 
 ---
 
@@ -175,6 +225,11 @@ docker run -e REANA_SERVER_URL -e REANA_ACCESS_TOKEN \
 
 ```
 mcpdocs/
+├── mcpdocs_agent/         # 🤖 MCP agent for AI-assisted workflows
+│   ├── __init__.py        # Package initialization
+│   ├── __main__.py        # CLI entry point
+│   └── server.py          # MCP server implementation
+│
 ├── sin_plot/              # Simple 2-step workflow (generate → plot)
 │   ├── README.md          # Example-specific documentation
 │   ├── reana.yaml         # REANA workflow definition
@@ -198,6 +253,9 @@ mcpdocs/
 │   ├── activeContext.md   # Current development state
 │   └── systemPatterns.md  # Architecture patterns
 │
+├── pyproject.toml         # Python project configuration
+├── mcp-config.json        # MCP server configuration
+├── MCP_AGENT_README.md    # MCP agent documentation
 ├── README.md              # This file - main documentation
 └── .gitignore             # Git exclusions
 ```
