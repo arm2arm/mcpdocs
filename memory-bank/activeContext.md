@@ -63,9 +63,9 @@ Potential future enhancements:
 4. Document both local development and remote execution
 
 ## Current Status
-- ✅ Workflow definition (reana.yaml) complete
-- ✅ Python scripts functional
-- ✅ Container configuration correct
-- ✅ Documentation complete
-- ✅ Git history maintained
-- ✅ Memory Bank initialized
+- [x] Workflow definition (reana.yaml) complete
+- [x] Python scripts functional
+- [x] Container configuration correct
+- [x] Documentation complete
+- [x] Git history maintained
+- [x] Memory Bank initialized

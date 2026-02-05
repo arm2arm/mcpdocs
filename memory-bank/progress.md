@@ -2,7 +2,7 @@
 
 ## What Works
 
-### ✅ Completed Features
+### Completed Features
 1. **REANA Serial Workflow Definition**
    - Two-step workflow: generate_data → plot_sin
    - Automatic file upload via inputs.files
@@ -35,7 +35,7 @@
 
 ## What's Left to Build
 
-### 🔄 Potential Enhancements
+### Potential Enhancements
 1. **Parameterized Workflow**
    - Add input parameters for amplitude, frequency, phase
    - Make sine wave customizable
@@ -50,12 +50,12 @@
    - Add unit tests for Python scripts
    - Add validation tests
 
-### 📋 Backlog
+### Backlog
 - None currently defined
 
 ## Current Status
 
-**Status**: ✅ Complete and functional
+**Status**: Complete and functional
 
 The REANA serial workflow for sine wave plotting is fully implemented:
 - Generates sine wave data (sin_data.txt)
