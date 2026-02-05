@@ -12,26 +12,26 @@ A curated collection of REANA serial workflow examples demonstrating best practi
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Quick Start](#-quick-start)
-- [Features](#-features)
-- [Installation & Prerequisites](#-installation--prerequisites)
-- [Usage Examples](#-usage-examples)
-- [Repository Structure](#-repository-structure)
-- [Development](#-development)
-- [Workflow Examples](#-workflow-examples)
-- [Common Commands](#-common-commands)
-- [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
-- [Security](#-security)
-- [License](#-license)
-- [Maintainers](#-maintainers)
-- [Links & Resources](#-links--resources)
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [Installation & Prerequisites](#installation--prerequisites)
+- [Usage Examples](#usage-examples)
+- [Repository Structure](#repository-structure)
+- [Development](#development)
+- [Workflow Examples](#workflow-examples)
+- [Common Commands](#common-commands)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
+- [Maintainers](#maintainers)
+- [Links & Resources](#links--resources)
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 Get started with a simple sine wave plotting workflow in under 2 minutes:
 
@@ -57,19 +57,19 @@ docker run -e REANA_SERVER_URL -e REANA_ACCESS_TOKEN \
 
 ---
 
-## ✨ Features
+## Features
 
-- **🔬 Reproducible Workflows**: Containerized scientific computing with REANA
-- **📊 Data Visualization**: Generate plots from computed data using Matplotlib
-- **☁️ Cloud Data Processing**: Read and analyze S3-hosted Parquet datasets
-- **⚡ Distributed Computing**: Leverage Dask for parallel data processing
-- **🐳 Docker Integration**: All workflows run in isolated containers
-- **📦 Scientific Stack**: Pre-configured with 50+ Python scientific libraries
-- **📝 Well-Documented**: Each example includes detailed README and inline comments
+- **Reproducible Workflows**: Containerized scientific computing with REANA
+- **Data Visualization**: Generate plots from computed data using Matplotlib
+- **Cloud Data Processing**: Read and analyze S3-hosted Parquet datasets
+- **Distributed Computing**: Leverage Dask for parallel data processing
+- **Docker Integration**: All workflows run in isolated containers
+- **Scientific Stack**: Pre-configured with 50+ Python scientific libraries
+- **Well-Documented**: Each example includes detailed README and inline comments
 
 ---
 
-## 📦 Installation & Prerequisites
+## Installation & Prerequisites
 
 ### Required Software
 
@@ -119,7 +119,7 @@ docker pull reanahub/reana-client:0.9.4
 
 ---
 
-## 📖 Usage Examples
+## Usage Examples
 
 ### Example 1: Simple Data Generation & Plotting
 
@@ -171,40 +171,40 @@ docker run -e REANA_SERVER_URL -e REANA_ACCESS_TOKEN \
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 mcpdocs/
-├── sin_plot/              # 🔵 Simple 2-step workflow (generate → plot)
-│   ├── README.md          #    Example-specific documentation
-│   ├── reana.yaml         #    REANA workflow definition
-│   ├── generate_data.py   #    Step 1: Generate 100 sine data points
-│   ├── plot_sin.py        #    Step 2: Create PNG plot
-│   └── sin_plot.png       #    Output (tracked in git)
+├── sin_plot/              # Simple 2-step workflow (generate → plot)
+│   ├── README.md          # Example-specific documentation
+│   ├── reana.yaml         # REANA workflow definition
+│   ├── generate_data.py   # Step 1: Generate 100 sine data points
+│   ├── plot_sin.py        # Step 2: Create PNG plot
+│   └── sin_plot.png       # Output (tracked in git)
 │
-├── dask_s3_read/          # 📊 Read S3 parquet & compute statistics
-│   ├── README.md          #    Example-specific documentation
-│   ├── reana.yaml         #    REANA workflow definition
-│   └── read_stats.py      #    Dask-based S3 data processing
+├── dask_s3_read/          # Read S3 parquet & compute statistics
+│   ├── README.md          # Example-specific documentation
+│   ├── reana.yaml         # REANA workflow definition
+│   └── read_stats.py      # Dask-based S3 data processing
 │
-├── dask_s3_plot/          # 🎨 Create hexbin plots from S3 data
-│   ├── README.md          #    Example-specific documentation
-│   ├── reana.yaml         #    REANA workflow definition
-│   └── hexbin_plots.py    #    Visualization script
+├── dask_s3_plot/          # Create hexbin plots from S3 data
+│   ├── README.md          # Example-specific documentation
+│   ├── reana.yaml         # REANA workflow definition
+│   └── hexbin_plots.py    # Visualization script
 │
-├── memory-bank/           # 🧠 AI context & development patterns
-│   ├── projectbrief.md    #    Project overview and requirements
-│   ├── techContext.md     #    Technical stack details
-│   ├── activeContext.md   #    Current development state
-│   └── systemPatterns.md  #    Architecture patterns
+├── memory-bank/           # AI context & development patterns
+│   ├── projectbrief.md    # Project overview and requirements
+│   ├── techContext.md     # Technical stack details
+│   ├── activeContext.md   # Current development state
+│   └── systemPatterns.md  # Architecture patterns
 │
-├── README.md              # 📘 This file - main documentation
+├── README.md              # This file - main documentation
 └── .gitignore             # Git exclusions
 ```
 
 ---
 
-## 🛠 Development
+## Development
 
 ### Validating Workflows Locally
 
@@ -284,7 +284,7 @@ outputs:
 
 ---
 
-## 📚 Workflow Examples
+## Workflow Examples
 
 ### 1. sin_plot
 
@@ -337,7 +337,7 @@ outputs:
 
 ---
 
-## 🔧 Common Commands
+## Common Commands
 
 ### Workflow Management
 
@@ -397,7 +397,7 @@ docker run -e REANA_SERVER_URL -e REANA_ACCESS_TOKEN \
 
 ---
 
-## ❓ Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -489,7 +489,7 @@ A: Outputs are stored on the REANA server. Use the `download` command to retriev
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Whether you want to add new workflow examples, improve documentation, or fix bugs, your help is appreciated.
 
@@ -553,7 +553,7 @@ Please be respectful and constructive in all interactions. We're here to learn a
 
 ---
 
-## 🔒 Security
+## Security
 
 ### Reporting Vulnerabilities
 
@@ -574,7 +574,7 @@ If you discover a security vulnerability, please do NOT open a public issue. Ins
 
 ---
 
-## 📄 License
+## License
 
 This project does not currently have a specified license file. Please contact the repository maintainers for licensing information before using or redistributing this code.
 
@@ -582,7 +582,7 @@ This project does not currently have a specified license file. Please contact th
 
 ---
 
-## 👥 Maintainers
+## Maintainers
 
 This project is maintained by:
 
@@ -598,7 +598,7 @@ For questions, suggestions, or collaboration:
 
 ---
 
-## 🔗 Links & Resources
+## Links & Resources
 
 ### Project Resources
 
@@ -624,8 +624,8 @@ For questions, suggestions, or collaboration:
 
 <div align="center">
 
-**⭐ If you find this project useful, please consider giving it a star! ⭐**
+**If you find this project useful, please consider giving it a star!**
 
-Made with ❤️ by the mcpdocs team
+Maintained by the mcpdocs team. This experimental project is part of the PhysicsLLM agentic work package.
 
 </div>
