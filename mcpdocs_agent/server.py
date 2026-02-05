@@ -7,9 +7,13 @@ and workflow automation using REANA.
 """
 
 import asyncio
+import base64
 import logging
 from typing import Any, Sequence
 
+import dask.dataframe as dd
+import matplotlib
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from mcp.server import Server
@@ -21,6 +25,9 @@ from mcp.types import (
     EmbeddedResource,
 )
 from pydantic import BaseModel, Field
+
+# Configure matplotlib backend for non-interactive use
+matplotlib.use('Agg')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -125,10 +132,6 @@ async def call_tool(name: str, arguments: Any) -> Sequence[TextContent | ImageCo
         params = PlotDataParams(**arguments)
         
         try:
-            import matplotlib
-            matplotlib.use('Agg')  # Use non-interactive backend
-            import matplotlib.pyplot as plt
-            
             # Read data from file
             df = pd.read_csv(params.data_file, sep=r'\s+')
             
@@ -160,7 +163,6 @@ async def call_tool(name: str, arguments: Any) -> Sequence[TextContent | ImageCo
             plt.close()
             
             # Read the image and encode as base64
-            import base64
             with open(params.output_file, 'rb') as f:
                 image_data = base64.b64encode(f.read()).decode('utf-8')
             
@@ -214,8 +216,6 @@ async def call_tool(name: str, arguments: Any) -> Sequence[TextContent | ImageCo
         params = S3DataParams(**arguments)
         
         try:
-            import dask.dataframe as dd
-            
             # Construct S3 path
             s3_path = f"s3://{params.bucket}/{params.prefix}/*.parquet"
             
