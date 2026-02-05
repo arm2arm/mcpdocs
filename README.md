@@ -593,9 +593,8 @@ This project is maintained by:
 ### Contact
 
 For questions, suggestions, or collaboration:
-- Open an issue: [GitHub Issues](https://github.com/arm2arm/mcpdocs/issues)
-- Start a discussion: [GitHub Discussions](https://github.com/arm2arm/mcpdocs/discussions) (if enabled)
-- Email: Check the GitHub profile for contact information
+- **Report Issues**: [GitHub Issues](https://github.com/arm2arm/mcpdocs/issues) - Report bugs or request features
+- **Pull Requests**: [Submit PRs](https://github.com/arm2arm/mcpdocs/pulls) - Contribute code or documentation improvements
 
 ---
 
